@@ -29,3 +29,37 @@ public class TrainConsistManagementApp {
         }
     }
 }
+import java.util.HashMap;
+import java.util.Map;
+
+public class UseCase6TrainConsistMgmt {
+
+    public static void main(String[] args) {
+
+        System.out.println("====================================");
+        System.out.println("UC6 - Map Bogie to Capacity (HashMap)");
+        System.out.println("====================================\n");
+
+        // Create HashMap (Key = Bogie ID, Value = Capacity)
+        Map<String, Integer> capacityMap = new HashMap<>();
+
+        // ---- INSERT bogie capacities ----
+        capacityMap.put("BG101", 72);
+        capacityMap.put("BG102", 80);
+        capacityMap.put("BG103", 65);
+        capacityMap.put("BG104", 90);
+
+        // ---- DISPLAY ALL ENTRIES ----
+        System.out.println("Bogie Capacity Details:");
+        for (Map.Entry<String, Integer> entry : capacityMap.entrySet()) {
+            System.out.println("Bogie: " + entry.getKey() +
+                    " -> Capacity: " + entry.getValue());
+        }
+
+        // ---- ACCESS specific bogie ----
+        String search = "BG102";
+        if (capacityMap.containsKey(search)) {
+            System.out.println("\nCapacity of " + search + " is: " + capacityMap.get(search));
+        }
+    }
+}
