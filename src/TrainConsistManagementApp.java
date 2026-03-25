@@ -29,3 +29,46 @@ public class UseCase3TrainConsistMgmt {
         }
     }
 }
+import java.util.LinkedList;
+import java.util.List;
+
+public class UseCase4TrainConsistMgmt {
+
+    public static void main(String[] args) {
+
+        System.out.println("====================================");
+        System.out.println("UC4 - Maintain Ordered Bogie Consist");
+        System.out.println("====================================\n");
+
+        // Create LinkedList
+        List<String> trainConsist = new LinkedList<>();
+
+        // ---- ADD bogies in sequence ----
+        trainConsist.add("BG101");
+        trainConsist.add("BG102");
+        trainConsist.add("BG103");
+
+        System.out.println("Initial Train: " + trainConsist);
+
+        // ---- INSERT at specific position ----
+        trainConsist.add(1, "BG105"); // insert at index 1
+
+        System.out.println("After Insertion at position 1: " + trainConsist);
+
+        // ---- REMOVE from front ----
+        trainConsist.remove(0);
+
+        System.out.println("After Removing Front: " + trainConsist);
+
+        // ---- REMOVE from rear ----
+        trainConsist.remove(trainConsist.size() - 1);
+
+        System.out.println("After Removing Rear: " + trainConsist);
+
+        // ---- FINAL DISPLAY ----
+        System.out.println("\nFinal Train Structure:");
+        for (String bogie : trainConsist) {
+            System.out.println(bogie);
+        }
+    }
+}
