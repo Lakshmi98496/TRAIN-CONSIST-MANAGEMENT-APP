@@ -1,13 +1,38 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+import java.util.ArrayList;
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+class Train {
+    private ArrayList<String> bogies;
+
+    // Constructor
+    public Train() {
+        bogies = new ArrayList<>();
+    }
+
+    // Get bogie count
+    public int getBogieCount() {
+        return bogies.size();
+    }
+
+    // Display train state
+    public void displayTrain() {
+        if (bogies.isEmpty()) {
+            System.out.println("Train is empty. No bogies attached.");
+        } else {
+            System.out.println("Bogies: " + bogies);
+        }
+    }
+}
+
+public class UseCase1TrainConsistMgmt {
+    public static void main(String[] args) {
+
+        // Initialize Train
+        Train train = new Train();
+
+        // Display initial state
+        System.out.println("=== Train Consist Management System ===");
+        System.out.println("Initial Bogie Count: " + train.getBogieCount());
+
+        train.displayTrain();
     }
 }
