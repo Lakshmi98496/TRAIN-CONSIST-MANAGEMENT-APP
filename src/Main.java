@@ -1,13 +1,42 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+import java.util.ArrayList;
+import java.util.List;
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+public class UseCase2TrainConsistMgmt {
+
+    public static void main(String[] args) {
+
+        System.out.println("====================================");
+        System.out.println("UC2 - Add Passenger Bogies to Train");
+        System.out.println("====================================\n");
+
+        // Create ArrayList
+        List<String> passengerBogies = new ArrayList<>();
+
+        // ---- CREATE (Add bogies) ----
+        passengerBogies.add("B1");
+        passengerBogies.add("B2");
+        passengerBogies.add("B3");
+
+        System.out.println("After Adding Bogies: " + passengerBogies);
+
+        // ---- DELETE (Remove bogie) ----
+        passengerBogies.remove("B2");
+
+        System.out.println("After Removing B2: " + passengerBogies);
+
+        // ---- SEARCH (Check availability) ----
+        String searchBogie = "B1";
+
+        if (passengerBogies.contains(searchBogie)) {
+            System.out.println(searchBogie + " is available in the train.");
+        } else {
+            System.out.println(searchBogie + " is NOT available.");
+        }
+
+        // ---- DISPLAY FINAL CONSIST ----
+        System.out.println("\nFinal Train Consist:");
+        for (String bogie : passengerBogies) {
+            System.out.println(bogie);
+        }
     }
 }
