@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class UseCase2TrainConsistMgmt {
+public class TrainConsistMgmt {
 
     public static void main(String[] args) {
 
