@@ -63,3 +63,58 @@ public class UseCase6TrainConsistMgmt {
         }
     }
 }
+import java.util.*;
+
+public class UseCase7TrainConsistMgmt {
+
+    // Inner class
+    static class Bogie {
+        String id;
+        int capacity;
+
+        Bogie(String id, int capacity) {
+            this.id = id;
+            this.capacity = capacity;
+        }
+
+        @Override
+        public String toString() {
+            return id + " -> " + capacity;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println("====================================");
+        System.out.println("UC7 - Sort Bogies by Capacity");
+        System.out.println("====================================\n");
+
+        // Create list
+        List<Bogie> bogies = new ArrayList<>();
+
+        // ---- ADD bogies ----
+        bogies.add(new Bogie("BG101", 72));
+        bogies.add(new Bogie("BG102", 80));
+        bogies.add(new Bogie("BG103", 65));
+        bogies.add(new Bogie("BG104", 90));
+
+        // ---- DISPLAY UNSORTED ----
+        System.out.println("Before Sorting:");
+        for (Bogie b : bogies) {
+            System.out.println(b);
+        }
+
+        // ---- SORT using Comparator ----
+        Collections.sort(bogies, new Comparator<Bogie>() {
+            public int compare(Bogie b1, Bogie b2) {
+                return b1.capacity - b2.capacity; // ascending
+            }
+        });
+
+        // ---- DISPLAY SORTED ----
+        System.out.println("\nAfter Sorting (by capacity):");
+        for (Bogie b : bogies) {
+            System.out.println(b);
+        }
+    }
+}
