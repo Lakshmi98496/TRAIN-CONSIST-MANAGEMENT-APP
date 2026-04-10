@@ -42,3 +42,57 @@ public class Main {
         System.out.println("\nUCB filtering completed...");
     }
 }
+import java.util.*;
+
+// MAIN CLASS
+public class UseCase14TrainConsistMgmt {
+
+    // ---- CUSTOM EXCEPTION ----
+    static class InvalidCapacityException extends Exception {
+        public InvalidCapacityException(String message) {
+            super(message);
+        }
+    }
+
+    // ---- Passenger Bogie Model ----
+    static class PassengerBogie {
+        String name;
+        int capacity;
+
+        PassengerBogie(String name, int capacity) throws InvalidCapacityException {
+            // Validation inside constructor
+            if (capacity <= 0) {
+                throw new InvalidCapacityException("Invalid capacity for " + name);
+            }
+            this.name = name;
+            this.capacity = capacity;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println("==============================================");
+        System.out.println(" UCB14 - Handle Invalid Bogie Capacity ");
+        System.out.println("==============================================\n");
+
+        List<PassengerBogie> bogies = new ArrayList<>();
+
+        // Creating bogies safely
+        try {
+            bogies.add(new PassengerBogie("Sleeper", 72));
+            bogies.add(new PassengerBogie("AC Chair", 56));
+            bogies.add(new PassengerBogie("First Class", -10)); // INVALID
+            bogies.add(new PassengerBogie("General", 90));
+        } catch (InvalidCapacityException e) {
+            System.out.println("Exception: " + e.getMessage());
+        }
+
+        // Display valid bogies
+        System.out.println("\nValid Bogies:");
+        for (PassengerBogie b : bogies) {
+            System.out.println(b.name + " -> " + b.capacity);
+        }
+
+        System.out.println("\nExecution continues safely...");
+    }
+}
