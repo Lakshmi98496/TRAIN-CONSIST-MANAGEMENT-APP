@@ -96,3 +96,63 @@ public class UseCase14TrainConsistMgmt {
         System.out.println("\nExecution continues safely...");
     }
 }
+import java.util.*;
+
+// MAIN CLASS
+public class UseCase15TrainConsistMgmt {
+
+    // ---- CUSTOM RUNTIME EXCEPTION ----
+    static class CargoSafetyException extends RuntimeException {
+        public CargoSafetyException(String message) {
+            super(message);
+        }
+    }
+
+    // ---- Goods Bogie Model ----
+    static class GoodsBogie {
+        String shape;
+        String cargo;
+
+        GoodsBogie(String shape) {
+            this.shape = shape;
+        }
+
+        // Assign cargo with validation
+        void assignCargo(String cargo) {
+            try {
+                // Rule: Rectangular bogie cannot carry Petroleum
+                if (shape.equalsIgnoreCase("Rectangular") &&
+                        cargo.equalsIgnoreCase("Petroleum")) {
+
+                    throw new CargoSafetyException(
+                            "Safety Violation: Rectangular bogie cannot carry Petroleum"
+                    );
+                }
+
+                this.cargo = cargo;
+                System.out.println("Cargo assigned: " + shape + " -> " + cargo);
+
+            } catch (CargoSafetyException e) {
+                System.out.println("Exception: " + e.getMessage());
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println("=================================================");
+        System.out.println(" UC15 - Cargo Safety Check (Runtime Exception) ");
+        System.out.println("=================================================\n");
+
+        // Create bogies
+        GoodsBogie b1 = new GoodsBogie("Rectangular");
+        GoodsBogie b2 = new GoodsBogie("Cylindrical");
+
+        // Assign cargo
+        b1.assignCargo("Petroleum");   // ❌ should throw exception
+        b2.assignCargo("Petroleum");   // ✅ allowed
+        b1.assignCargo("Food");        // ✅ allowed
+
+        System.out.println("\nProgram continues safely...");
+    }
+}
