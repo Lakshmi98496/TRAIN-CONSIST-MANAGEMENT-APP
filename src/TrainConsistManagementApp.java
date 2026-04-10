@@ -42,3 +42,50 @@ public class Main {
         System.out.println("\nUCB filtering completed...");
     }
 }
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+public class UseCase11TrainConsistMgmt {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Accept input
+        System.out.print("Enter Train ID (Format: TRN-1234): ");
+        String trainId = scanner.nextLine();
+
+        System.out.print("Enter Cargo Code (Format: PET-AB): ");
+        String cargoCode = scanner.nextLine();
+
+        // ----- DEFINE REGEX RULES -----
+
+        // TRN-1234 → TRN + hyphen + exactly 4 digits
+        String trainRegex = "TRN-\\d{4}";
+
+        // PET-AB → 3 uppercase letters + hyphen + 2 uppercase letters
+        String cargoRegex = "[A-Z]{3}-[A-Z]{2}";
+
+        // ----- VALIDATION USING Pattern -----
+
+        boolean isTrainValid = Pattern.matches(trainRegex, trainId);
+        boolean isCargoValid = Pattern.matches(cargoRegex, cargoCode);
+
+        // Display results
+        System.out.println("\nValidation Results:");
+
+        if (isTrainValid) {
+            System.out.println("Train ID is VALID");
+        } else {
+            System.out.println("Train ID is INVALID");
+        }
+
+        if (isCargoValid) {
+            System.out.println("Cargo Code is VALID");
+        } else {
+            System.out.println("Cargo Code is INVALID");
+        }
+
+        scanner.close();
+    }
+}
