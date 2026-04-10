@@ -42,3 +42,38 @@ public class Main {
         System.out.println("\nUCB filtering completed...");
     }
 }
+import java.util.*;
+
+public class UseCase17TrainConsistMgmt {
+
+    public static void main(String[] args) {
+
+        System.out.println("==============================================");
+        System.out.println(" UC17 - Sort Bogie Names Using Arrays.sort() ");
+        System.out.println("==============================================\n");
+
+        // Create array of bogie names
+        String[] bogieNames = {
+                "Sleeper",
+                "AC Chair",
+                "First Class",
+                "General",
+                "AC 2 Tier"
+        };
+
+        // Display original array
+        System.out.println("Original Bogie Names:");
+        for (String name : bogieNames) {
+            System.out.println(name);
+        }
+
+        // -------- SORT USING Arrays.sort() --------
+        Arrays.sort(bogieNames);
+
+        // Display sorted array
+        System.out.println("\nSorted Bogie Names:");
+        for (String name : bogieNames) {
+            System.out.println(name);
+        }
+    }
+}
